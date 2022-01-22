@@ -1,0 +1,92 @@
+<style>
+    /* You can add global styles to this file, and also import other style files */
+.table-icon {
+    width: 20px;
+    height: 20px;
+}
+</style>
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Simple Table</h4>
+                        <p class="card-category"> Here is a subtitle for this table</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        ID
+                                    </th>
+                                    <th>
+                                        Fist Name
+                                    </th>
+                                    <th>
+                                        Last Name
+                                    </th>
+                                    <th>
+                                        Age
+                                    </th>
+                                    <th>
+                                        Gender
+                                    </th>
+                                    <th>
+                                        Created at
+                                    </th>
+                                    <th>
+                                        Trial Start
+                                    </th>
+                                    <th>
+                                        Trial End
+                                    </th>
+                                </thead>
+                                <tbody>
+                                   <tr *ngFor="let patient of patientsList">
+                                       <td>
+                                           {{patient.ID}}
+                                       </td>
+                                       <td>
+                                            {{patient.first_name}}
+                                       </td>
+                                       <td>
+                                            {{patient.last_name}}
+                                       </td>
+                                       <td>
+                                            {{patient.age}}
+                                        </td>
+                                        <td>
+                                            {{patient.gender}}
+                                        </td>
+                                        <td>
+                                            {{patient.created_at}}
+                                        </td>
+                                        <td>
+                                            {{patient.trial_start}}
+                                        </td>
+                                        <td>
+                                            {{patient.trial_end}}
+                                        </td>
+                                        <td>
+                                            <img class="table-icon" rel="icon" type="image/png" src="./../../assets/img/apple-icon.png" />
+                                            <img (click)="deletePatient(patient)" class="table-icon" rel="icon" type="image/png" src="./../../assets/img/apple-icon.png" />
+                                        </td>
+                                        <!-- <td>
+                                            {{patient.given_vaccines_ids}}
+                                        </td>
+                                        <td>
+                                            {{patient.doses_received}}
+                                        </td> -->
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
