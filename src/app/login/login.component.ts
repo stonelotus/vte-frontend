@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { defaultIfEmpty } from 'rxjs-compat/operator/defaultIfEmpty';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,8 @@ import { defaultIfEmpty } from 'rxjs-compat/operator/defaultIfEmpty';
 export class LoginComponent implements OnInit {
 
   constructor(
-    private http:HttpClient
+    private http:HttpClient,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -24,7 +26,7 @@ export class LoginComponent implements OnInit {
         switch(data.response){
           case 'success':
             console.log("Connected successfully. Redirecting..")
-            
+            this.router.navigate(['/dashboard', {}]);
             break;
           default: console.log('Unkown error'); break;
         }
