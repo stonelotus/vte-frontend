@@ -7,12 +7,80 @@
 </style>
 <div class="main-content">
     <div class="container-fluid">
+        <div *ngIf="showEditPatient" class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Edit patient</h4>
+                        <p class="card-category">Complete patient data</p>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <input #first_name matInput placeholder="First Name" type="text">
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <input #last_name matInput placeholder="Last Name" type="text">
+                                  </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <input #age matInput placeholder="Age" type="number">
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <input #gender matInput placeholder="Gender" type="text">
+                                  </mat-form-field>
+                                </div>
+                            </div>
+                            <br>
+  
+                            <div class="row">
+                                <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <input #trial_start matInput placeholder="Trial start" type="date">
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <input #trial_end matInput placeholder="Trial end" type="date">
+                                  </mat-form-field>
+                                </div>
+                                </div>
+                            <div class="row">
+                               
+                                <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <input #given_vaccine matInput placeholder="Given vaccine" type="text">
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <input #dose_number matInput placeholder="Dose number" type="number">
+                                  </mat-form-field>
+                                </div>
+                            </div>
+                         
+                            <button mat-raised-button type="submit" class="btn btn-danger pull-right">Add patient</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-danger">
-                        <h4 class="card-title ">Simple Table</h4>
-                        <p class="card-category"> Here is a subtitle for this table</p>
+                        <h4 class="card-title ">Active patients</h4>
+                        <p class="card-category">Active patients mainlog</p>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -70,8 +138,8 @@
                                             {{patient.trial_end}}
                                         </td>
                                         <td>
-                                            <img class="table-icon" rel="icon" type="image/png" src="./../../assets/img/apple-icon.png" />
-                                            <img (click)="deletePatient(patient)" class="table-icon" rel="icon" type="image/png" src="./../../assets/img/apple-icon.png" />
+                                            <img (click)="editPatientForm(patient)" class="table-icon" rel="icon" type="image/png" src="./../../assets/img/apple-icon.png" />
+                                            <img (click)="deletePatient(patient)" class="table-icon" rel="icon" type="image/png" src="./../../assets/img/icons/trash.png" />
                                         </td>
                                         <!-- <td>
                                             {{patient.given_vaccines_ids}}

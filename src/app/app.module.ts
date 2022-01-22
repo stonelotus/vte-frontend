@@ -42,7 +42,6 @@ import { PatientsControlComponent } from './patients-control/patients-control.co
     AppComponent,
     AdminLayoutComponent,
     LoginComponent,
-    PatientsControlComponent,
 
   ],
   providers: [],

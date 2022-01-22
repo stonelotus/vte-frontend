@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PatientsControlComponent implements OnInit {
   patientsList: any;
-
+  showEditPatient: boolean;
   constructor(
     private http: HttpClient
   ) { }
@@ -16,6 +16,7 @@ export class PatientsControlComponent implements OnInit {
   ngOnInit(): void {
     this.patientsList = [];
     this.getPatients();
+    this.showEditPatient = false;
   }
 
   getPatients() {
@@ -36,6 +37,9 @@ export class PatientsControlComponent implements OnInit {
         this.getPatients();
       }); 
     }
+  }
+  editPatientForm(patient: any) {
+    this.showEditPatient = true;
   }
 }
 
