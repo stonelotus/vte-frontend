@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class PatientsControlComponent implements OnInit {
   patientsList: any;
   showEditPatient: boolean;
+  currentEditedPatientID: number;
   constructor(
     private http: HttpClient
   ) { }
@@ -39,7 +40,13 @@ export class PatientsControlComponent implements OnInit {
     }
   }
   editPatientForm(patient: any) {
-    this.showEditPatient = true;
+    this.showEditPatient = true;  //TODO edit with good data
+    this.currentEditedPatientID = patient.ID;
+  }
+  updatePatient(patient: any) { 
+    this.http.get<any>("http://localhost:3000/update",{params: {resource: 'patient', patient: JSON.stringify(patient)}}).subscribe(data => {
+      this.getPatients();
+    });
   }
 }
 

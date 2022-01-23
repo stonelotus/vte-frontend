@@ -68,7 +68,16 @@
                                 </div>
                             </div>
                          
-                            <button mat-raised-button type="submit" class="btn btn-danger pull-right">Add patient</button>
+                            <button mat-raised-button type="submit" class="btn btn-danger pull-right" (click)="updatePatient({
+                                id: currentEditedPatientID,
+                                dose_number: dose_number.value,
+                                given_vaccine: given_vaccine.value, 
+                                trial_start:trial_start.value, 
+                                trial_end:trial_end.value, 
+                                first_name:first_name.value,
+                                last_name:last_name.value,
+                                age:age.value,
+                                gender: gender.value})">Update patient</button>
                             <div class="clearfix"></div>
                         </form>
                     </div>
