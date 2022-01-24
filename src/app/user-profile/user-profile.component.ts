@@ -8,11 +8,17 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UserProfileComponent implements OnInit {
 
+  availableConditions: any;
+  showAvailableConditions: boolean;
   constructor(
     private http: HttpClient
-  ) { }
+  ) { 
+  }
 
-  ngOnInit() {
+  ngOnInit(): void  {
+    this.availableConditions = [];
+    this.showAvailableConditions = false;
+    this.getAvailableConditions();
   }
 
   addPatient(patient: any){ 
@@ -20,5 +26,14 @@ export class UserProfileComponent implements OnInit {
     this.http.get<any>("http://localhost:3000/insert",{params: {resource: 'patient', patient: JSON.stringify(patient)}}).subscribe(data => {
       console.log(data);
     });
+  }
+  getAvailableConditions() {
+    let scope = this;
+    this.http.get<any>("http://localhost:3000/get",{params: {resource: 'conditions'}}).subscribe(data => {
+      scope.availableConditions = data.response;
+      console.log(scope.availableConditions);
+      scope.showAvailableConditions = true;
+
+    }); 
   }
 }
