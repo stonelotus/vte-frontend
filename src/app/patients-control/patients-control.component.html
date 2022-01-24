@@ -8,7 +8,61 @@
 <div class="main-content">
     <div class="container-fluid">
         <div *ngIf="showEditPatient" class="row">
-            <div class="col-md-8">
+            <div class="col-lg-6 col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-warning">
+                        <h4 class="card-title">Given Vaccines</h4>
+                        <p class="card-category">Data on given vaccines</p>
+                    </div>
+                    <div class="card-body table-responsive">
+                        <table class="table table-hover">
+                            <thead class="text-warning">
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Administration date</th>
+                                <th>Expiration date</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let vaccine of currentPatientFullData.givenVaccines">
+                                    <td>{{vaccine.ID}}</td>
+                                    <td>{{vaccine.name}}</td>
+                                    <td>{{vaccine.administration_date}}</td>
+                                    <td>{{vaccine.expiration_date}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-warning">
+                        <h4 class="card-title">Patient conditions</h4>
+                        <p class="card-category">Data on patient's known conditions</p>
+                    </div>
+                    <div class="card-body table-responsive">
+                        <table class="table table-hover">
+                            <thead class="text-warning">
+                                <th>Condition</th>
+                                <th>Description</th>
+                                <th>Risk level</th>
+                                <th>Observations</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let condition of currentPatientFullData.patientConditions">
+                                    <td>{{condition.condition}}</td>
+                                    <td>{{condition.description}}</td>
+                                    <td>{{condition.risk_level}}</td>
+                                    <td>{{condition.observations}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="showEditPatient" class="row">
+            <div class="col-md-6">
                 <div class="card">
                     <div class="card-header card-header-danger">
                         <h4 class="card-title">Edit patient</h4>
@@ -83,7 +137,32 @@
                     </div>
                 </div>
             </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-warning">
+                        <h4 class="card-title">Suffering side-effects</h4>
+                        <p class="card-category">Data on suffering side-effects</p>
+                    </div>
+                    <div class="card-body table-responsive">
+                        <table class="table table-hover">
+                            <thead class="text-warning">
+                                <th>Side effect</th>
+                                <th>Description</th>
+                                <th>Observations</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let sideEffect of currentPatientFullData.patientSideEffects">
+                                    <td>{{sideEffect.side_effect}}</td>
+                                    <td>{{sideEffect.description}}</td>
+                                    <td>{{sideEffect.observations}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
+        
         <div class="row">
             <div class="col-md-12">
                 <div class="card">

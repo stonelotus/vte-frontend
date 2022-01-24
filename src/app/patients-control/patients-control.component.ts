@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PatientsControlComponent implements OnInit {
   patientsList: any;
+  currentPatientFullData: any;
   showEditPatient: boolean;
   currentEditedPatientID: number;
   constructor(
@@ -40,12 +41,31 @@ export class PatientsControlComponent implements OnInit {
     }
   }
   editPatientForm(patient: any) {
-    this.showEditPatient = true;  //TODO edit with good data
-    this.currentEditedPatientID = patient.ID;
+    let scope = this;
+    this.getPatientFullData(patient.ID, function() {
+      scope.showEditPatient = true;
+      scope.currentEditedPatientID = patient.ID;
+    });
+
   }
   updatePatient(patient: any) { 
     this.http.get<any>("http://localhost:3000/update",{params: {resource: 'patient', patient: JSON.stringify(patient)}}).subscribe(data => {
       this.getPatients();
+    });
+  }
+  getGivenVaccineFullData(patientID:any, callback) {
+    this.http.get<any>("http://localhost:3000/get",{params: {'resource': 'given_vaccine', 'level': 'full', id: patientID}}).subscribe(data => {
+      console.log(data.response);
+      // this.givenVaccines = data.response;
+      callback();
+    });
+  }
+  getPatientFullData(patientID: any, callback) {
+    let scope = this;
+    this.http.get<any>("http://localhost:3000/get",{params: {'resource': 'patient', 'level': 'full', id: patientID}}).subscribe(data => {
+      scope.currentPatientFullData = data.response;
+      console.log(data.response);
+      callback();
     });
   }
 }
