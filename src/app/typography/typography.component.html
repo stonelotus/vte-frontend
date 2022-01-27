@@ -8,6 +8,128 @@
 <div class="main-content">
     <div class="container-fluid">
         <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Add a drug</h4>
+                        <p class="card-category">Complete drug data</p>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <input #name matInput placeholder="Name" type="text">
+                                  </mat-form-field>
+                                </div>
+                                
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <input #expiration_date matInput placeholder="Expiration" type="date">
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <input #production_date matInput placeholder="Production" type="date">
+                                  </mat-form-field>
+                                </div>
+                            </div>
+  
+                            <div class="row">
+                                <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <input #side_effect_fix matInput placeholder="Side effect fix" type="text">
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <input #prohibited_condition matInput placeholder="Prohibited condition" type="text">
+                                  </mat-form-field>
+                                </div>
+                                </div>
+                     
+                         
+                            <button mat-raised-button type="submit" (click)="addDrug({
+                                name:name.value,
+                                expiration_date:expiration_date.value, 
+                                production_date: production_date.value, 
+                                side_effect_fix: side_effect_fix.value,
+                                prohibited_condition: prohibited_condition.value})"class="btn btn-danger pull-right">Add drug</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+              <div class="col-md-3">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Side effects</h4>
+                        <p class="card-category">Side effects list</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        Side effect
+                                    </th>
+                                    <th>
+                                        Description
+                                    </th>
+                                </thead>
+                                <tbody>
+                                   <tr *ngFor="let side_effect of sideEffects">
+                                        <td>
+                                            {{side_effect.name}}
+                                        </td> 
+                                        <td>
+                                            {{side_effect.description}}
+                                        </td> 
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title ">Conditions list</h4>
+                        <p class="card-category">List of possible prohibited conditions</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+                                    <th>
+                                        Condition
+                                    </th>
+                                    <th>
+                                        Description
+                                    </th>
+                                    
+                                </thead>
+                                <tbody>
+                                   <tr *ngFor="let condition of conditionsArray">
+                                        <td>
+                                            {{condition.name}}
+                                        </td> 
+                                        <td>
+                                            {{condition.description}}
+                                        </td> 
+                                        
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-danger">
@@ -33,12 +155,15 @@
                                     <th>
                                         Prohibited condition
                                     </th>
+                                    <th>
+                                        Prohibited condition description
+                                    </th>
                                     
                                 </thead>
                                 <tbody>
                                    <tr *ngFor="let drug of drugs">
                                         <td>
-                                            {{drug.name}}
+                                            {{drug.name[0]}}
                                         </td> <td>
                                             {{drug.expiration_date || '-'}}
                                         </td> <td>
@@ -47,6 +172,9 @@
                                             {{drug.side_effect_fix|| '-'}}
                                         </td> <td>
                                             {{drug.prohibited_condition|| '-'}}
+                                        </td>
+                                        <td>
+                                            {{drug.description || '-'}}
                                         </td>
                                        
                                    
