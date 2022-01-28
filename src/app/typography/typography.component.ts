@@ -80,4 +80,12 @@ export class TypographyComponent implements OnInit {
       this.getDrugs();
     });
   }
+  deleteDrug(drugId: any): void {
+    console.log("Clicked delete");
+    if(confirm("Are you sure to delete ")) {
+      this.http.get<any>("http://localhost:3000/delete",{params: {'resource': 'drug', 'id': drugId}}).subscribe(data => {
+      
+      });
+    }
+  }
 }

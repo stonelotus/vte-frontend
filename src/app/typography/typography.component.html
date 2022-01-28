@@ -177,7 +177,9 @@
                                             {{drug.description || '-'}}
                                         </td>
                                        
-                                   
+                                        <td>
+                                            <img (click)="deleteDrug(drug.name[0])" class="table-icon" rel="icon" type="image/png" src="./../../assets/img/icons/trash.png" />
+                                        </td>
                                         <!-- <td>
                                             {{patient.given_vaccines_ids}}
                                         </td>
